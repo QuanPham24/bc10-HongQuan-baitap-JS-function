@@ -8,6 +8,55 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
+  <!-- Bai tap so 1 -->
+  <div class="container">
+    <h1>bai tap tuyen sinh</h1>
+    <div class="container mt-5">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label>DiemChuan:</label>
+            <input type="text" class="form-control" id="diemChuan" name="inputName" placeholder="Diem Chuan">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="area">Chon khu vuc</label>
+            <select class="form-control" id="area" name="inputArea">
+              <option value="ChonKhuVuc">Chon Khu Vuc</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="object">Doi Tuong</label>
+            <select class="form-control" id="object" name="inputDoiTuong">
+              <option value="ChonDoiTuong">Chon Doi Tuong</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+          
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="score1">diem mon 1</label>
+            <input type="text" class="form-control" id="score1" name="inputScore1" placeholder="diem mon 1">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="score2">diem mon 2</label>
+            <input type="text" class="form-control" id="score2" name="inputScore2" placeholder="diem mon 2">
+          </div>
+          <div class="form-group col-md-4">
+          <label for="score3">diem mon 3</label>
+          <input type="text" class="form-control" id="score3" name="inputScore3" placeholder="diem mon 3">
+        </div>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="TongKet()">Submit</button>
+      </form>
+      <h2 class="text-primary" id="tongKet"></h2>
+    </div>
+  </div>
 
 <!-- bai tap so 2 -->
 <div class="container">

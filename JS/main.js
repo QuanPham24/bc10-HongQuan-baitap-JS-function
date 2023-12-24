@@ -1,4 +1,85 @@
 /**
+ * Bai tap so 1: Diem tuyen sinh
+ * KHoi1: nhan du lieu :diem chuan, khu vuc, doi tuong, diem cua 3 mon
+ * 
+ * khoi 2:
+ * + create function TongKet()
+ * + create variable and store values for: diem chuan, khu vuc, doi tuong, diem cua mon1 , mon2, mon3
+ * + create variables for diem cong cua khu vuc va doi tuong
+ * + create variable for diem tong ket
+ * + neu co 1 mon bang 0 in ra output
+ * + so sanh voi diem chuan va output ket qua
+ * 
+ * khoi 3:output and display
+ */
+
+function diemCongKhuVuc(khuVuc){
+    var giaTri = 0;
+    switch (khuVuc){
+        case "A": 
+            giaTri = 2;
+            break;
+        case "B": 
+            giaTri = 1;
+            break;
+        case "C": 
+            giaTri = 0.5;
+            break;
+        default:
+            giaTri = 0;
+    }
+    return giaTri;
+}
+
+function diemCongDoiTuong(doiTuong){
+    var giaTri = 0;
+    switch (doiTuong){
+        case "1": 
+            giaTri = 2.5;
+            break;
+        case "2": 
+            giaTri = 1.5;
+            break;
+        case "3": 
+            giaTri = 1;
+            break;
+        default:
+            giaTri = 0;
+    }
+    return giaTri;
+}
+
+function TongKet(){
+    var diemChuan = document.getElementById("diemChuan").value *1;
+    console.log(diemChuan);
+    var khuVuc = document.getElementById("area").value;
+    var doiTuong = document.getElementById("object").value;
+    var diem1= document.getElementById("score1") .value*1;
+    var diem2= document.getElementById("score2") .value*1;
+    var diem3= document.getElementById("score3") .value*1;
+
+    var diemKhuVuc = diemCongKhuVuc(khuVuc);
+    var diemDoiTuong = diemCongDoiTuong(doiTuong);
+    var tongDiem = diem1 + diem2 + diem3 + diemKhuVuc + diemDoiTuong;
+    var tong = "";
+
+    if(diem1 <= 0 || diem2 <=0 || diem3 <=0){
+        tong = "Ban truot, ban co mot hay nhieu mon bang 0 hoac nho hon 0";
+    }else if (tongDiem >= diemChuan){
+        tong = "Ban da dau, xin chuc mung";
+    }else{
+        tong = "Ban da truot do diem thap hon diem chuan";
+    }
+
+    document.getElementById("tongKet").innerText = tong;
+}
+
+
+
+
+
+
+/**
  * Bai tap so 2 tinh tien dien
  * B1: nhan du lieu tu user name and Kw
  * B2: viet function tinh tien dien

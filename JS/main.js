@@ -127,3 +127,131 @@ function TinhTienDien(){
 
 
 
+
+/**
+ * Bai tap 3: Tinh Thue THu Nhap hang nam
+ * Khoi 1: nhan du lieu tu user: name, thu nhap, nguoi phu thuoc
+ * 
+ * Khoi 2: write function Tax()
+ * + store data into variable: fullName,ThuNhap, nguoiPhuThuoc
+ * + thuNhapChiuThue = thuNhap - 4tr - nguoiPhuThuoc * 1.6tr
+ * + Compare and get value for % thue
+ * + tienThue = thuNhapChiuThue * % thue
+ * 
+ * khoi 3: display output
+ */
+
+function thue(income){
+    // var taxPercent = 0;
+    if(income <= 6000000){
+        return 0.05;
+    }else if (income <= 120000000){
+        return 0.1;
+    }else if (income <= 210000000){
+        return 0.15;
+    }else if (income <= 384000000){
+        return 0.2;
+    }else if (income <= 624000000){
+        return 0.25;
+    }else if (income <= 960000000){
+        return 0.3;
+    }else{
+        return 0.35;
+    }
+}
+
+function Tax(){
+    var fullName = document.getElementById("name").value;
+
+    var thuNhap = document.getElementById("incomePerYear").value * 1;
+
+    var childDependent = document.getElementById("dependent").value * 1;
+
+    
+
+    var thuNhapChiuThue = thuNhap - (4e+6) - childDependent *(1.6e+6);
+
+    var percentThue = thue(thuNhapChiuThue);
+    var tienThue = thuNhapChiuThue * percentThue;
+
+    document.getElementById("thue").innerText="Ho va Ten: " + fullName + "\n Tien Thue: " + new Intl.NumberFormat().format(tienThue) + " VND"; 
+}
+
+
+/**bai tap so 4: tinh tien cap
+ * khoi 1: nhan du lieu tu user: customer type, ma khach hang, so kenh cao cap
+ * 
+ * khoi 2: viet function tinh bill
+ * + var customerType = type khach hang
+ * + var numbKenh = so kenh cao cap
+ * + var ma = ma khach hang
+ * + tao bien cho phi dich vu: 
+ *  ++nha dan: 20.5
+ *  ++doanh nghiep: 75 cho 10 ket noi dau( <10 van dong gia), 5 cho moi ket noi them: (so ket noi them - 10) * 5
+ * + phi dich vu cho kenh cao cap:
+ *  ++: nha dan: (sokenh) * 7.5
+ *  ++ doanh nghiep: (soKenh) * 50
+ * + phi xu ly: nha dan(4.5) , doanh nghiep(15)
+ * khoi 3: output
+ */
+// function toggle an/hien vung so ket noi khi type = business
+function handleCustomerChange() {
+    var customerType = document.getElementById("type").value;
+    var maKetNoi = document.getElementById("ketNoi");
+  
+    if (customerType === "Business") {
+      maKetNoi.style.display = "block";
+    } else {
+      maKetNoi.style.display = "none";
+    }
+  }
+
+function tienXuLy(type){
+    if(type == "personal"){
+        return 4.5;
+    }else if (type == "Business"){
+        return 15;
+    } else {
+        return 0;
+    }
+}
+function tienDichVu(type,numbConnect){
+    var giaTien = 0;
+    if(type == "personal"){
+        giaTien = 20.5;
+    }else if (type == "Business"){
+        if(numbConnect <= 10){
+            giaTien = 75;
+        }else{
+            giaTien = 75 + (numbConnect - 10) * 5;
+        }
+    } else {
+        giaTien = 0;
+    }
+    return giaTien;
+}
+
+function tienMoiKenh(type){
+    if(type == "personal"){
+        return 7.5;
+    }else if (type == "Business"){
+        return 50;
+    } else {
+        return 0;
+    }
+}
+
+function tienCap(){
+    var customerType = document.getElementById("type").value;
+    var customerNumber = document.getElementById("codeCustomer").value;
+    var soKenh = document.getElementById("premiumChannel").value * 1;
+
+    var soKetNoi = document.getElementById("codeConnect").value * 1;
+
+    var phiXuLy = tienXuLy(customerType);
+    var phiDichVu = tienDichVu(customerType, soKetNoi);
+    var phiKenh = tienMoiKenh(customerType);
+
+    var bill = phiXuLy + phiDichVu + phiKenh * soKenh;
+    document.getElementById("billCap").innerText = "Ma khach hang: " + customerNumber + "\nHoa Don:$ " + bill.toFixed(2);
+}
